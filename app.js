@@ -27,8 +27,18 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/merchant-point-info', (req, res) => {
-  res.send('merchant-point-info');
+app.get('/merchant-point-info/:merchantId', async (req, res) => {
+    const merchantId = req.params.merchantId;
+    if (!merchantId) {
+        res.status(400).send('Merchant ID is required');
+        return;
+    }
+    try {
+        const merchantPointInfo = await db.collection('merchant').doc(merchantId).get();
+        res.send(merchantPointInfo.data());
+    } catch (error) {
+        res.status(500).send(error);
+    }
 });
 
 const PORT = process.env.PORT || 8080;
