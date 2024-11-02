@@ -22,3 +22,5 @@ steps:
       '--allow-unauthenticated',
       '--set-env-vars', 'ALLOWED_ORIGINS=*'
     ]
+images:
+  - 'gcr.io/$PROJECT_ID/point-app-api-server'

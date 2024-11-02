@@ -1,10 +1,8 @@
 # Dockerfile
-FROM node:18
+FROM node:lts-slim
 
 WORKDIR /usr/src/app
 
-# 環境変数の設定
-ENV PORT=8080
 EXPOSE 8080
 
 # 依存関係のインストール
