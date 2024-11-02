@@ -3,7 +3,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
-      '--platform', 'linux/amd64',  # ここでプラットフォームを指定
+      '--platform', 'linux/amd64',
       '-t', 'gcr.io/$PROJECT_ID/point-app-api-server',
       '.'
     ]
