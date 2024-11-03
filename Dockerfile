@@ -1,15 +1,20 @@
+# 官方 Node.js 18 LTS 版本をベースイメージとして使用
+FROM node:18-alpine
 
-FROM node:18
+# 作業ディレクトリを設定
+WORKDIR /app
 
-WORKDIR /usr/src/app
+# package.json と package-lock.jsonをコピー
+COPY package.json package-lock.json ./
 
-ENV PORT=8080
-EXPOSE 8080
+# 依存関係をインストール
+RUN npm install --production
 
-
-COPY package*.json ./
-RUN npm install
-
+# 残りのアプリケーションコードをコピー
 COPY . .
 
-CMD ["npm", "start"]
+# ポート8080を公開（Cloud Runでは必須ではないが、明示するため）
+EXPOSE 8080
+
+# アプリケーションを起動
+CMD ["node", "app.js"]

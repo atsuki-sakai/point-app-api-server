@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
@@ -22,7 +20,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.get('/merchant-point-info/:merchantId', async (req, res) => {
     const merchantId = req.params.merchantId;
     if (!merchantId) {
@@ -37,7 +34,8 @@ app.get('/merchant-point-info/:merchantId', async (req, res) => {
     }
 });
 
-const PORT = 8080;
-app.listen(PORT, () => {
+// PORTを環境変数から取得、未設定時は8080をデフォルト
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
