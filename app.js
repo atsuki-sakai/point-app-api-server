@@ -2,10 +2,10 @@ const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
 
-const serviceAccount = require('./serviceAccountKey.json');
+// const serviceAccount = require('./serviceAccountKey.json');
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.applicationDefault()
 });
 
 const db = admin.firestore();
