@@ -1,5 +1,5 @@
 
-require('dotenv').config();
+
 const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
@@ -37,7 +37,7 @@ app.get('/merchant-point-info/:merchantId', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
